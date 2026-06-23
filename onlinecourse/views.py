@@ -135,7 +135,7 @@ def extract_answers(request):
 
 def submit(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
-    user = request.POST["user"]
+    user = request.user
 
     enrollment = Enrollment.objects.get(user=user, course=course)
     submission = Submission.objects.create(enrollment=enrollment)
